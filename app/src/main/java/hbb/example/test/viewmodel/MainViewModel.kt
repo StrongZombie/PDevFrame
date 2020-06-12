@@ -13,7 +13,6 @@ import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.*
 import androidx.lifecycle.ViewModel
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import hbb.example.test.Image.MyDrawable
 import hbb.example.test.Image.PaletteUtil
 import hbb.example.test.ImageSwitchView

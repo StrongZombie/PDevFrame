@@ -6,8 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.hujiang.android-aspectjx'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
     defaultConfig {
         applicationId "hbb.example.test"
         minSdkVersion 24
@@ -16,7 +16,32 @@ android {
         versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        externalNativeBuild{
+            cmake{
+                cppFlags ""
+            }
+            ndk {
+                //打包进APK的ABI类型
+                abiFilters 'armeabi-v7a', 'x86'
+            }
+        }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
     }
+
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.10.2"
+        }
+    }
+
+
     buildTypes {
         release {
             minifyEnabled false
@@ -74,5 +99,19 @@ dependencies {
     //普通ARCode
     implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.5.0'
     implementation 'com.google.ar:core:1.5.0'
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+
+    implementation rootProject.ext.dependencies["arouter-api"]
+    //exoPlayer支持同时解码多给资源文件
+    implementation 'com.google.android.exoplayer:exoplayer:2.9.1'
+
+    if (isNeddRebound.toBoolean()){
+        implementation project(':rebound')
+    }
+
+//    if (isNeedChat.toBoolean()){
+        implementation project(':chat')
+//    }
+    implementation project(':home')
 
 }

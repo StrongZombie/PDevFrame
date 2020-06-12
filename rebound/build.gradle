@@ -1,4 +1,8 @@
-apply plugin: 'com.android.library'
+if (isNeddRebound.toBoolean()){
+    apply plugin: 'com.android.library'
+}else{
+    apply plugin: 'com.android.Application'
+}
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 android {
@@ -7,6 +11,9 @@ android {
 
 
     defaultConfig {
+        if (!isNeddRebound.toBoolean()){
+            applicationId 'com.rebound'
+        }
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
@@ -14,6 +21,11 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
     }
 
     buildTypes {
@@ -33,4 +45,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+
+    implementation rootProject.ext.dependencies["arouter-api"]
 }

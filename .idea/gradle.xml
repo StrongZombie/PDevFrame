@@ -11,12 +11,12 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/android" />
-            <option value="$PROJECT_DIR$/android33" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/app12" />
+            <option value="$PROJECT_DIR$/chat" />
+            <option value="$PROJECT_DIR$/commonlib" />
+            <option value="$PROJECT_DIR$/find" />
+            <option value="$PROJECT_DIR$/home" />
             <option value="$PROJECT_DIR$/rebound" />
-            <option value="$PROJECT_DIR$/wraplayout" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

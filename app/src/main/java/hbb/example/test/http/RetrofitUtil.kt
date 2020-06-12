@@ -13,17 +13,15 @@ import hbb.example.test.BuildConfig
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.OkHttpClient
 
-
-
-
-
-
 /**
  * @author HuangJiaHeng
  * @date 2020/2/5.
- */
+ * */
 class RetrofitUtil {
     companion object{
+        /**
+         * 超时时间
+         * */
         const val DEFAULT_TIMEOUT = 10L
 
         lateinit var retrofit:Retrofit
@@ -37,18 +35,22 @@ class RetrofitUtil {
             appContext=context
         }
     }
+
     init {
         retrofit = Retrofit.Builder()
             .baseUrl(UrlManager.BASE_URL)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
-            .client(getOkhttpClient())
+            .client(getOkHttpClient())
             .build()
     }
 
 
-
-    private fun getOkhttpClient():OkHttpClient{
+    /**
+     * 获取OkHttpClient对象
+     * @return okHttpClient
+     * */
+    private fun getOkHttpClient():OkHttpClient{
         return OkHttpClient.Builder()
             .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
@@ -59,10 +61,18 @@ class RetrofitUtil {
             .build()
     }
 
+    /**
+     * 自动Cookie管理
+     * @return PersistentCookieJar
+     * */
     private fun getCookieJar():PersistentCookieJar{
         return  PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(appContext))
     }
 
+    /**
+     * 打印拦截器 release下不打印
+     * @return HttpLoggingInterceptor
+     * */
     private fun getLogInterceptor():HttpLoggingInterceptor{
         val logInterceptor = HttpLoggingInterceptor()
 

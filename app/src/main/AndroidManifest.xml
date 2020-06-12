@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/MaterialAnimations">
+       >
         <meta-data android:name="com.google.ar.core" android:value="required" />
         <service
             android:name=".accessibility.AccessibilityServiceTest"
@@ -35,7 +35,7 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name=".arcode.ARCodeActivity">
+        <activity android:name=".jni.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -47,6 +47,7 @@
             android:theme="@style/MaterialAnimations" />
         <activity android:name=".transactionAnimation.oneActivity.OneActivity" />
         <activity android:name=".transactionAnimation.twoactivity.TwoActivity" />
+
 
     </application>
 
