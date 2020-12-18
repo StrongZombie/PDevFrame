@@ -14,7 +14,7 @@ JNIEXPORT jstring JNICALL
 Java_hbb_example_test_jni_MainActivity_ffmpegInfo(JNIEnv *env, jobject  /* this */) {
 
     char info[40000] = {0};
-    AVCodec *c_temp = av_codec_next(NULL);
+    AVCodec *c_temp = NULL;
     while (c_temp != NULL) {
         if (c_temp->decode != NULL) {
             sprintf(info, "%sdecode:", info);

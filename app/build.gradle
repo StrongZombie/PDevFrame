@@ -5,6 +5,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.hujiang.android-aspectjx'
 
+
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     buildToolsVersion rootProject.ext.android["buildToolsVersion"]
@@ -48,6 +49,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+
     dataBinding{
         enabled = true
     }
@@ -56,6 +59,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
 }
 
 dependencies {
@@ -104,6 +108,16 @@ dependencies {
     implementation rootProject.ext.dependencies["arouter-api"]
     //exoPlayer支持同时解码多给资源文件
     implementation 'com.google.android.exoplayer:exoplayer:2.9.1'
+
+    //dagger2
+    implementation 'com.google.dagger:dagger:2.11'
+    kapt 'com.google.dagger:dagger-compiler:2.11'
+
+    //kotlin协程
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.0'
+
+    //motionlayout
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
 
     if (isNeddRebound.toBoolean()){
         implementation project(':rebound')

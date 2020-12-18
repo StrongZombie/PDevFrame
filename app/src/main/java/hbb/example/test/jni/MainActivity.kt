@@ -1,5 +1,6 @@
 package hbb.example.test.jni
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
@@ -9,6 +10,8 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.google.firebase.FirebaseApp
 import hbb.example.test.R
+import hbb.example.test.dagger2.Dagger2Guide
+import hbb.example.test.inlinefuncation.KotlinGuide
 import hbb.example.test.voicespeak.MoneyUtil
 import hbb.example.test.voicespeak.VoiceSpeak
 import kotlinx.android.synthetic.main.activity_jni.*
@@ -23,7 +26,7 @@ import java.util.*
 @Route (path = "/app/main")
 class MainActivity :AppCompatActivity(){
 
-    external fun ffmpegInfo(): String
+//    external fun ffmpegInfo(): String
 
     companion object {
         // Used to load the 'native-lib' library on application startup.
@@ -39,8 +42,12 @@ class MainActivity :AppCompatActivity(){
         setContentView(R.layout.activity_jni)
         FirebaseApp.initializeApp(this)
         ARouter.getInstance().inject(this)
+//        KotlinGuide.coroutines()
+        Log.e("Dagger2Guide","开始")
+        Dagger2Guide().dagger1()
+
 //        Log.e("MoneyUtil",FirebaseInstanceId.getInstance().id+"\t"+FirebaseInstanceId.getInstance().instanceId)
-        tv_from_jni.text = ffmpegInfo()
+//        tv_from_jni.text = ffmpegInfo()
 
         tv_from_jni.setOnClickListener {
 //            startActivity(Intent(this,MainActivity::class.java))

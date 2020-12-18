@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+<!-- 手指滑动改背景颜色-->
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@+id/start"
+        motion:duration="1000">
+        <OnSwipe
+            motion:dragDirection="dragRight"
+            motion:touchAnchorId="@id/button"
+            motion:touchAnchorSide="right" />
+        <KeyFrameSet >
+<!--
+android:visibility
+android:alpha
+android:elevation
+android:rotation
+android:rotationX
+android:rotationY
+transitionPathRotate
+android:scaleX
+android:scaleY
+android:translationX
+android:translationY
+android:translationZ-->
+<!--            <KeyAttribute-->
+<!--                android:rotation="-45"-->
+<!--                android:scaleX="2"-->
+<!--                android:scaleY="2"-->
+<!--                motion:framePosition="50"-->
+<!--                motion:motionTarget="@id/button" />-->
+<!--            parentRelative
+percentX 和 percentY 是相对于父视图指定的。X 为横轴，范围从 0（左端）到 1（右端）。Y 为纵轴，其中 0 为顶部，1 为底部。-->
+<!--            deltaRelative  开始位置为0  结束位置为1   X轴和Y轴都是开始为0 结束为1  用一个对角线滑动试一下就知道什么效果了
+percentX 和 percentY 是相对于视图在整个运动序列过程中移动的距离指定的。X 为横轴，Y 为纵轴；在这两种情况下，0 为视图在该轴上的起始位置，1 为最终位置。-->
+<!--pathRelative   运动方向为x轴  垂直（向下）为Y轴
+X 轴是目标视图在路径范围内移动的方向，其中 0 为起始位置，1 为最终位置。Y 轴垂直于 X 轴，正值位于路径左侧，负值位于右侧-->
+<!--            <KeyPosition-->
+<!--                motion:motionTarget="@id/button"-->
+<!--                motion:framePosition="50"-->
+<!--                motion:percentY="-0.5"-->
+<!--                motion:keyPositionType="deltaRelative">-->
+
+
+
+<!--            </KeyPosition>-->
+
+            <KeyCycle
+                android:translationY="50dp"
+                motion:framePosition="100"
+                motion:motionTarget="@id/button"
+                motion:waveOffset="0"
+                motion:wavePeriod="0"
+                motion:waveShape="sin" />
+            <KeyCycle
+                android:translationY="50dp"
+                motion:framePosition="50"
+                motion:motionTarget="@id/button"
+                motion:waveOffset="0"
+                motion:wavePeriod="1"
+                motion:waveShape="sin" />
+            <KeyCycle
+                android:translationY="50dp"
+                motion:framePosition="0"
+                motion:motionTarget="@id/button"
+                motion:waveOffset="0"
+                motion:wavePeriod="0"
+                motion:waveShape="sin" />
+        </KeyFrameSet>
+    </Transition>
+a
+    <ConstraintSet android:id="@+id/start">
+        <Constraint android:id="@id/button">
+            <Layout
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginStart="8dp"
+                motion:layout_constraintBottom_toBottomOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toTopOf="parent" />
+            <CustomAttribute
+                motion:attributeName="BackgroundColor"
+                motion:customColorValue="@color/sample_yellow"
+                />
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet
+        android:id="@+id/end"
+        motion:deriveConstraintsFrom="@id/start">
+
+        <Constraint android:id="@id/button">
+            <Layout
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginEnd="8dp"
+
+                motion:layout_constraintEnd_toEndOf="parent" />
+            <CustomAttribute
+                motion:attributeName="BackgroundColor"
+                motion:customColorValue="#9999FF" />
+        </Constraint>
+    </ConstraintSet>
+
+</MotionScene>

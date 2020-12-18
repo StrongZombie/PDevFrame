@@ -2,7 +2,6 @@ package hbb.example.test.http
 
 import android.content.Context
 import retrofit2.Retrofit
-
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -10,8 +9,10 @@ import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersisto
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import hbb.example.test.BuildConfig
+import okhttp3.Interceptor
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 
 /**
  * @author HuangJiaHeng
@@ -34,6 +35,9 @@ class RetrofitUtil {
         fun init(context: Context){
             appContext=context
         }
+
+
+
     }
 
     init {
@@ -57,6 +61,7 @@ class RetrofitUtil {
             .readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
             .retryOnConnectionFailure(true)//错误重联
             .addInterceptor(getLogInterceptor()) //日志输出
+//            .addInterceptor(getHeaderInterceptor())
             .cookieJar(getCookieJar()) //Cookie管理
             .build()
     }
@@ -84,4 +89,12 @@ class RetrofitUtil {
         return logInterceptor
     }
 
+//    private fun getHeaderInterceptor():Interceptor{
+//        return object : Interceptor{
+//            override fun intercept(chain: Interceptor.Chain): Response {
+//                chain.request().newBuilder().addHeader("")
+//            }
+//
+//        }
+//    }
 }

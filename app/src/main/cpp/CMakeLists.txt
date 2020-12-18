@@ -111,13 +111,13 @@ find_library( # Sets the name of the path variable.
 target_link_libraries( # Specifies the target library.
                         main
                 #FFmpeg 相关库
-                        avutil
-                        swresample
-                        avcodec
-                        avfilter
-                        swscale
-                        avformat
-                        avdevice
+#                        avutil
+#                        swresample
+#                        avcodec
+#                        avfilter
+#                        swscale
+#                        avformat
+#                        avdevice
                        # Links the target library to the log library
                        # included in the NDK.
                        ${log-lib} )

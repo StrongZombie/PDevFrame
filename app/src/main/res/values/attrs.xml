@@ -7,5 +7,9 @@
             <enum name="right" value="1003"/>
         </attr>
     </declare-styleable>
+    <declare-styleable name="KabLayout">
 
+        <attr name="tabIndicatorMarginBottom" format="dimension" />
+
+    </declare-styleable>
 </resources>

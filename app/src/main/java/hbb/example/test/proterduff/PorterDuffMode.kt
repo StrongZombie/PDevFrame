@@ -110,7 +110,7 @@ class PorterDuffMode(context: Context,attributeSet: AttributeSet?=null) :View(co
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
-        var paint = Paint()
+
         var saveIndex = canvas?.saveLayer(0f,0f,100f,100f,null)
 
         canvas?.drawBitmap(bitmapDrc,0f,0f,srcPaint) //drc是圆  src 是方
