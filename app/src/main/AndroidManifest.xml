@@ -43,7 +43,7 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name=".motionlayout.MotionLayoutAct">
+        <activity android:name=".OpenGL.GLSurfaceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -56,6 +56,16 @@
             android:theme="@style/MaterialAnimations" />
         <activity android:name=".transactionAnimation.oneActivity.OneActivity" />
         <activity android:name=".transactionAnimation.twoactivity.TwoActivity" />
+
+        <service android:name=".ipc.Messenger"
+            android:exported="true"
+            android:enabled="true"
+            android:permission="hbb.example.test.messenger" >
+            <intent-filter>
+                <action android:name="com.zhy.aidl.MessengerService"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
 
 
     </application>

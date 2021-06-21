@@ -1,7 +1,7 @@
 if (isNeddRebound.toBoolean()){
     apply plugin: 'com.android.library'
 }else{
-    apply plugin: 'com.android.Application'
+    apply plugin:  'com.android.library'
 }
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -11,9 +11,9 @@ android {
 
 
     defaultConfig {
-        if (!isNeddRebound.toBoolean()){
-            applicationId 'com.rebound'
-        }
+//        if (!isNeddRebound.toBoolean()){
+//            applicationId 'com.rebound'
+//        }
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1

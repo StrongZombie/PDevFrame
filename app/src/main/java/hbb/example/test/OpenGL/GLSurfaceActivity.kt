@@ -25,13 +25,13 @@ class GLSurfaceActivity :AppCompatActivity(){
         gLView = MyGLSurfaceView(this)
         setContentView(gLView)
 
-        gLView.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-        }
-        val slideTransition = Slide()
-        slideTransition.slideEdge = Gravity.LEFT
-        slideTransition.setDuration(3000)
-        window.reenterTransition = slideTransition
-        window.exitTransition = slideTransition
+//        gLView.setOnClickListener {
+//            startActivity(Intent(this, MainActivity::class.java))
+//        }
+//        val slideTransition = Slide()
+//        slideTransition.slideEdge = Gravity.LEFT
+//        slideTransition.setDuration(3000)
+//        window.reenterTransition = slideTransition
+//        window.exitTransition = slideTransition
     }
 }

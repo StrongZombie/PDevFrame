@@ -1,13 +1,15 @@
 package hbb.example.test.OpenGL
 
-import android.opengl.*
+import android.graphics.SurfaceTexture
+import android.opengl.GLSurfaceView
+import hbb.example.test.OpenGL.Camerautil.CameraUtil
 import javax.microedition.khronos.opengles.GL10
 
 /**
  * @author HuangJiaHeng
  * @date 2020/2/17.
  */
-class MyGLRenderer : GLSurfaceView.Renderer {
+class MyGLRenderer : GLSurfaceView.Renderer, SurfaceTexture.OnFrameAvailableListener {
     lateinit var triangle: Triangle
     lateinit var square: Square
     /***/
@@ -15,15 +17,19 @@ class MyGLRenderer : GLSurfaceView.Renderer {
     private val projectionMatrix = FloatArray(16)
     private val viewMatrix = FloatArray(16)
 
-    override fun onSurfaceCreated(unused: GL10, config: javax.microedition.khronos.egl.EGLConfig) {
-        triangle = Triangle()
-        square = Square()
+    private var mSurfaceTexture: SurfaceTexture? = null
 
+    //surface 创建监听
+    override fun onSurfaceCreated(unused: GL10, config: javax.microedition.khronos.egl.EGLConfig) {
+        //将纹理和离屏buffer绑定
+        mSurfaceTexture = SurfaceTexture(1)
+        mSurfaceTexture!!.setOnFrameAvailableListener(this)
     }
 
+    // 纹理绘制
     override fun onDrawFrame(unused: GL10) {
 //        triangle.draw()
-        square.draw()
+//        square.draw()
 //        // Set the camera position (View matrix)
 //        Matrix.setLookAtM(viewMatrix, 0, 0f, 0f, -3f, 0f, 0f, 0f, 0f, 1.0f, 0.0f)
 //
@@ -35,6 +41,7 @@ class MyGLRenderer : GLSurfaceView.Renderer {
 
     }
 
+    //     //surface 改变
     override fun onSurfaceChanged(unused: GL10, width: Int, height: Int) {
 //        GLES20.glViewport(0, 0, width, height)
 //
@@ -43,6 +50,12 @@ class MyGLRenderer : GLSurfaceView.Renderer {
 //        // this projection matrix is applied to object coordinates
 //        // in the onDrawFrame() method
 //        Matrix.frustumM(projectionMatrix, 0, -ratio, ratio, -1f, 1f, 3f, 7f)
+        //打开相机
+        CameraUtil.openCamera(width, height, mSurfaceTexture?)
+    }
+
+    override fun onFrameAvailable(surfaceTexture: SurfaceTexture?) {
+
     }
 
 

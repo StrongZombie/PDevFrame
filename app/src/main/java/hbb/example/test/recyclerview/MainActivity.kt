@@ -113,7 +113,7 @@ class MainActivity  : AppCompatActivity(){
                 Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
             requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS),1001)
         }
-        Algorithm().mergeSort(intArrayOf(99,0,12,34,88,65,44))
+//        Algorithm().mergeSort(intArrayOf(99,0,12,34,88,65,44))
 
     }
 }

@@ -1,5 +1,6 @@
 package hbb.example.test.saf
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.database.Cursor
@@ -14,7 +15,10 @@ import android.provider.Settings
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import hbb.example.test.R
+import hbb.example.test.bilibili.Solution
+//import hbb.example.test.bilibili.ZhenTi
 import hbb.example.test.coroutines.CoroutinesGuide
 import hbb.example.test.databinding.ActivitySafMainBinding
 import hbb.example.test.saf.vm.ClickListener
@@ -29,7 +33,7 @@ import java.io.*
  * https://developer.android.google.cn/guide/topics/providers/create-document-provider
  */
 
-class MainActivity  : AppCompatActivity(){
+class  MainActivity  : AppCompatActivity(){
 
     companion object{
         private const val READ_REQUEST_CODE: Int = 42
@@ -44,6 +48,12 @@ class MainActivity  : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(mainBinding.root)
         CoroutinesGuide.show1()
+//        ZhenTi.calcLr(intArrayOf(1,2,8,3,5,7))
+        Solution.maxProfit(intArrayOf(1,2))
+//        val intent = Intent()
+//        AdvertisingIgetAdvertisingIdInfo()
+//        intent.action= Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION
+//        startActivity(intent)
         mainBinding.vm = Vm()
         mainBinding.onClick = object : ClickListener{
             override fun onCLick(v: View) {

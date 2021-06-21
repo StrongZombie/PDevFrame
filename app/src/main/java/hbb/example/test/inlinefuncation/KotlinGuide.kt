@@ -164,4 +164,13 @@ object KotlinGuide{
         delay(1000)
         return "await"
     }
+
+    fun getNumResult(result:(Int,Int)->Int):Int{
+        return result(1,2)
+    }
+
+    fun log(){
+        Log.e("TAG", getNumResult { i, i2 -> i+i2 }.toString())
+    }
+
 }

@@ -1,5 +1,6 @@
 package hbb.example.test
 
+import android.content.Context
 import android.os.Environment
 import androidx.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
@@ -12,8 +13,14 @@ import java.io.File
  * @date 2020/3/17.
  */
 class App : MultiDexApplication(){
+
+    companion object{
+        lateinit var app:Context
+    }
+
     override fun onCreate() {
         super.onCreate()
+        app = this.applicationContext
         ToastUtils.get.init(this)
 //        if (BuildConfig.DEBUG) { // 这两行必须写在init之前，否则这些配置在init过程中将无效
             ARouter.openLog() // 打印日志
