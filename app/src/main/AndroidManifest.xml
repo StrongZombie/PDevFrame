@@ -43,7 +43,7 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name=".OpenGL.GLSurfaceActivity">
+        <activity android:name=".recyclerview.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -39,12 +39,8 @@ class ShaderView(context: Context,attributes: AttributeSet?=null)  : View(contex
     lateinit var composeComposeShader:ComposeShader
     lateinit var ccPaint:Paint
     lateinit var composePaint :Paint
-
-
     lateinit var avoidPaint:Paint
     init {
-
-
         /**
          * bitmapShader 刮刮奖
          * */

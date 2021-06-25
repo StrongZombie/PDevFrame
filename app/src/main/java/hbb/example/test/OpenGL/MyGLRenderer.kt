@@ -51,7 +51,7 @@ class MyGLRenderer : GLSurfaceView.Renderer, SurfaceTexture.OnFrameAvailableList
 //        // in the onDrawFrame() method
 //        Matrix.frustumM(projectionMatrix, 0, -ratio, ratio, -1f, 1f, 3f, 7f)
         //打开相机
-        CameraUtil.openCamera(width, height, mSurfaceTexture?)
+//        CameraUtil.openCamera(width, height, mSurfaceTexture?)
     }
 
     override fun onFrameAvailable(surfaceTexture: SurfaceTexture?) {

@@ -2,10 +2,10 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
-      <module name="Test.app" target="1.8" />
-      <module name="Test.chat" target="1.8" />
-      <module name="Test.home" target="1.8" />
-      <module name="Test.rebound" target="1.8" />
+      <module name="Test.app" target="11" />
+      <module name="Test.chat" target="11" />
+      <module name="Test.home" target="11" />
+      <module name="Test.rebound" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
