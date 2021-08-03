@@ -12,24 +12,39 @@ import java.nio.ShortBuffer
  */
 
 
+// number of coordinates per vertex in this array
+const val COORDS_PER_VERTEX = 3
+var squareCoords = floatArrayOf(
+    -0.5f,  0.5f, 0.0f,      // top left
+    -0.5f, -0.5f, 0.0f,      // bottom left
+    0.5f, -0.5f, 0.0f,      // bottom right
+    0.5f,  0.5f, 0.0f       // top right
+)
+
 class Square {
-    var squareCoords = floatArrayOf(
-        -0.5f,0.5f,0.0f,
-        0.5f,0.5f,0.0f,
-        -0.5f,-0.5f,0.0f,
-        0.5f,-0.5f,0.0f
-    )
-    // Set color with red, green, blue and alpha (opacity) values
 
-    val color = floatArrayOf(0.63671875f, 0.76953125f, 0.22265625f, 1.0f)  //颜色
-    private val drawOrder = shortArrayOf(0, 1, 2, 0, 2, 3) // order to draw vertices
-    private var mProgram:Int = OpenGLUtil.init(false)
-    init {
-        OpenGLUtil.setDrawColor(color)
-        OpenGLUtil.setDrawFloatCoords(squareCoords)
-    }
+    private val drawOrder = shortArrayOf(0, 1, 2, 0, 2, 3) // order to draw vertices  绘制坐标系的顺序 （
+    // 绘制squareCoords的0，1，2 再绘制0，2，3 两个三角形加起来就是正方形）
 
-    fun draw(){
-        OpenGLUtil.draw(mProgram,OpenGLUtil.floatArray2FloatBuffer(squareCoords))
-    }
+    // initialize vertex byte buffer for shape coordinates
+    private val vertexBuffer: FloatBuffer =
+        // (# of coordinate values * 4 bytes per float)
+        ByteBuffer.allocateDirect(squareCoords.size * 4).run {
+            order(ByteOrder.nativeOrder())
+            asFloatBuffer().apply {
+                put(squareCoords)
+                position(0)
+            }
+        }
+
+    // initialize byte buffer for the draw list
+    private val drawListBuffer: ShortBuffer =
+        // (# of coordinate values * 2 bytes per short)
+        ByteBuffer.allocateDirect(drawOrder.size * 2).run {
+            order(ByteOrder.nativeOrder())
+            asShortBuffer().apply {
+                put(drawOrder)
+                position(0)
+            }
+        }
 }

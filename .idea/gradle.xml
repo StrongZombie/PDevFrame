@@ -17,11 +17,11 @@
             <option value="$PROJECT_DIR$/find" />
             <option value="$PROJECT_DIR$/home" />
             <option value="$PROJECT_DIR$/lib" />
+            <option value="$PROJECT_DIR$/library" />
             <option value="$PROJECT_DIR$/rebound" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
-        <option name="useQualifiedModuleNames" value="true" />
       </GradleProjectSettings>
     </option>
   </component>

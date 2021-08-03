@@ -43,7 +43,7 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name=".recyclerview.MainActivity">
+        <activity android:name=".glide.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -141,14 +141,14 @@ object  CoroutinesGuide {
 
     }
 
-//    //flow 异步流
+    //flow 异步流
 //    fun simple(): Flow<Int> = flow { // 流构建器
 //        for (i in 1..3) {
 //            delay(100) // 假装我们在这里做了一些有用的事情
 //            emit(i) // 发送下一个值
 //        }
 //    }
-//     收集这个流
+////     收集这个流
 //    simple().collect { value -> println(value) }
 //    (1..3).asFlow().collect { value -> println(value) }
     fun login(username: String, token: String) {

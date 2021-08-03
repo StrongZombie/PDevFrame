@@ -28,7 +28,7 @@ public class TEST {
         }catch (Exception e){
             e.printStackTrace();
         }
-        MainViewModelKt
+//        MainViewModelKt
     }
 
 
